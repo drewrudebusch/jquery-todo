@@ -6,6 +6,9 @@ div	{
 /*	float: left;
 	clear: left;*/
 }
+li:div label {
+	text-decoration: inherit;
+}
 #container {
 	margin: 0 auto;
 }
@@ -16,11 +19,14 @@ div	{
 #title h1 {
 	display: inline-block;
 }
-#new-item-button {
+#new-item, #delete-item, #clear-complete {
 	display: inline-block;
 	/*margin-left: 40px;*/
-	margin: 0px 0px 20px 10px;
-	padding: 7px 7px;
+	padding: 7px 12px;
+	margin-bottom: 20px;
+}
+#new-item {
+	margin-left: 10px;
 }
 #add-item-modal {
 	display: inline-block;
@@ -45,14 +51,19 @@ div	{
 	list-style: none;
 }
 .ui-state-default {
-	margin-left: 20px;
-	margin-right: 20px;
-	/*float: left;*/
-	/*clear: both;*/
-	/*min-width: 300px;*/
+	margin-right: 40px;
+	min-width: 300px;
+	max-width: 600px;
+}
+.delete {
+	display: inline-block;
+	float: right;
+	margin-right: 10px;
+	padding: 5px 7px;
+	margin-top: -3px;
 }
 .checkbox {
-	margin-left: 5px;
+	margin-left: 15px;
 	/*display: inline-block;*/
 }
 .strike {
@@ -60,4 +71,7 @@ div	{
 }
 .opaque {
 	opacity: .5;
+}
+.hidden {
+	visibility: hidden;
 }

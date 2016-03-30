@@ -1,44 +1,77 @@
 $(document).ready(function() {
+	var completeTasksHidden = false;
 
 	$(function() {
 	    $( "#sortable" ).sortable();
 	    $( "#sortable" ).disableSelection();
-	  });
+	});
+
+	$('#new-item-modal').on('shown.bs.modal', function(){
+		$(this).find('#add-item').focus();
+	});
 
 	$('#add-item-form').submit(function(event) {
 		event.preventDefault();
-		$(this).children('input:text').each(function(index, elem) {
-			var newItem = $(elem).val()
-			$('#sortable').append(
-				'<li class="ui-state-default"><div class="checkbox"><label><input type="checkbox" id="cb'
-				+ ($('#sortable').children('li').length + 1)
-				+ '">'
-				+ newItem
-				+ '</label></div></li>');
-			$(elem).val('');
+			$(this).children('input:text').each(function(index, elem) {
+				var newTask = $(elem).val()
+				if (newTask !== "") {
+					createNewTask(newTask);
+				}
+				$(elem).val('');
 		});
 	});
 
-$('#check').on('change', function() { 
-	if ($(this).is(':checked')) {
-		$(this).parent(0).addClass('strike opaque');
+	$('#sortable').on('change', '.task', function() { 
+		if ($(this).is(':checked')) {
+			$(this).parent().addClass('strike opaque');
+			completeTasksHidden = false;
+	    } else {
+	    	$(this).parent().removeClass('strike opaque');
+	    }
+	});
 
-		console.log($(this).parents(1).html())
-    } else {
-    	$(this).parents(0).removeClass('strike opaque');
-		console.log($(this).parents(1).html())
-    }
-});
-
-
-// $('.check').change(function(event) {
-// 	$(this).each(function(index, elem) {.
-// 		if ($(elem).prop('checked')) {
-// 			$(elem).addClass('strike');
-// 		};
-// 	});
-// });
+	$('#sortable').on('click', '.delete', function() {
+		var taskItem = $(this).parents('.task-item-container');
+		taskItem.remove();
+	});
 
 
+	$('#clear-complete').on('click', function() {
+		clearCompletedTasks();
+		sortCompletedToBottom();
+	});		
+		
 
+	var clearCompletedTasks = function() {
+		if (completeTasksHidden) {
+			$('.hidden').removeClass('hidden');
+			completeTasksHidden = false;
+		} else {
+			$('.task').each(function(index, elem) {
+				var taskItem = $(this).parents('.task-label')
+				var taskItemContainer = $(this).parents('.task-item-container')
+					if (taskItem.hasClass('strike')) {
+						taskItemContainer.addClass('hidden');
+					};
+				});
+			if($('.hidden').length >= 1) {
+				completeTasksHidden = true;
+			};
+		};
+	};
+
+	var createNewTask = function (newTask) {
+		$('#sortable').append(
+			'<div class="ui-sortable-handle task-item-container"><li class="ui-state-default"><div class="checkbox"><label class="task-label"><input type="checkbox" class="task">' + newTask + '</label><div class="delete btn btn-danger"><span class="glyphicon glyphicon-trash"></span></div></div></li></div>');
+	}
+
+	var sortCompletedToBottom = function () {
+		$('.task').each(function(index, elem) {
+			var taskItem = $(this).parents('.task-label')
+			var taskItemContainer = $(this).parents('.task-item-container')
+				if (taskItem.hasClass('strike')) {
+					taskItemContainer.appendTo('#sortable');
+				};
+			});
+		};
 });

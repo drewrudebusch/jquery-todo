@@ -16,64 +16,86 @@
 		<h1>To Do List</h1>
 
 	<!-- Trigger the modal with a button -->
-	<button type="button" class="btn btn-primary" id="new-item-button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span></button>
+	<button type="button" class="btn btn-primary" id="new-item" data-toggle="modal" data-target="#new-item-modal"><span class="glyphicon glyphicon-plus"></span></button>
+<!-- 	<button type="button" class="btn btn-danger" id="delete-item" data-toggle="modal" data-target="#delete-item-modal"><span class="glyphicon glyphicon-trash"></span></button> -->
+	<button type="button" class="btn btn-success" id="clear-complete"><span class="glyphicon glyphicon-list"></span></button>
 	</div>
 
 	<div id="sort">
-		<ul id="sortable">
-		 <!--  <li class="ui-state-default">
-			  <div class="checkbox">
-			    <label>
-			      <input type="checkbox" id="cb1">Item 1
-			    </label>
-			  </div>
-		  </li>
-		  <li class="ui-state-default">
-			  <div class="checkbox">  
-			    <label>
-			      <input type="checkbox">Item 2
-			    </label>
-			  </div>
-		  </li>
-		  <li class="ui-state-default">
-			  <div class="checkbox"> 
-			    <label>
-			      <input type="checkbox">Item 3
-			    </label>
-			  </div>
-		  </li>
-		  <li class="ui-state-default">
-			  <div class="checkbox"> 
-			   	<label>
-			   	   <input type="checkbox">Item 4
-			   	</label>
-		   	  </div>
-		   </li> -->
+		<ul class="sortable" id="sortable">
+		  <div class="ui-sortable-handle task-item-container">
+			  <li class="ui-state-default">
+				  <div class="checkbox">
+				    <label class="task-label">
+				      <input type="checkbox" class="task" >Item 1
+				    </label>
+				    <div class="delete btn btn-danger"><span class="glyphicon glyphicon-trash"></span></div>
+				  </div>
+			  </li>
+		  </div>
+		  <div class="ui-sortable-handle task-item-container">
+			  <li class="ui-state-default">
+				  <div class="checkbox">  
+				    <label class="task-label">
+				      <input type="checkbox" class="task" >Item 2
+				    </label>
+				  <div class="delete btn btn-danger"><span class="glyphicon glyphicon-trash"></span></div>
+			  </li>
+		  </div>
+		  <div class="ui-sortable-handle task-item-container">
+			  <li class="ui-state-default">
+				  <div class="checkbox"> 
+				    <label class="task-label">
+				      <input type="checkbox" class="task" >Item 3
+				    </label>
+				  <div class="delete btn btn-danger"><span class="glyphicon glyphicon-trash"></span></div>
+			  </li>
+		  </div>
+		  <div class="ui-sortable-handle task-item-container">
+			  <li class="ui-state-default">
+				  <div class="checkbox"> 
+				   	<label class="task-label">
+				   	   <input type="checkbox" class="task" >Item 4
+				   	</label>
+			   	  <div class="delete btn btn-danger"><span class="glyphicon glyphicon-trash"></span></div>
+			   </li>
+		   </div>
 		</ul>
 	</div>
 </div>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<!-- New Item Modal -->
+<div id="new-item-modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content" id="add-item-modal">
       <div class="modal-header">
         <button type="button" id="add-item-modal-close" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">New List Item</h4>
-      	
       	<form class="form-inline" id="add-item-form" role="form">
 		  <!-- <div class="form-group"> -->
-		    <input type="text" class="form-control" id="new-item">
-		    <input type="submit" class="btn btn-default" id="add-item-submit">
+		    <input type="text" class="form-control" id="add-item">
+		    <input type="submit" value="Add" class="btn btn-default" id="add-item-submit">
 		  <!-- </div> -->
 		</form>
-
       </div>
     </div>
   </div>
 </div>
 
+<!-- <div id="delete-item-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content" id="add-item-modal">
+      <div class="modal-header">
+        <button type="button" id="add-item-modal-close" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> Permenantly delete?</h4>
+      	<form class="form-inline" id="delete-item-form" role="form">
+		    <input type="submit" value="Delete" class="btn btn-primary" id="delete-item-submit">
+		</form>
+      </div>
+    </div>
+  </div>
+</div> -->
 
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
