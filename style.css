@@ -1,0 +1,63 @@
+body {
+	font-size: 18px;
+}
+div	{
+	/*display: block;*/
+/*	float: left;
+	clear: left;*/
+}
+#container {
+	margin: 0 auto;
+}
+#title {
+	display: inline-block;
+	margin-left: 40px;
+}
+#title h1 {
+	display: inline-block;
+}
+#new-item-button {
+	display: inline-block;
+	/*margin-left: 40px;*/
+	margin: 0px 0px 20px 10px;
+	padding: 7px 7px;
+}
+#add-item-modal {
+	display: inline-block;
+}
+#add-item-modal h4 {
+	display: inline-block;
+	margin-right: 5px;
+}
+#add-item-modal-close {
+	margin-left: 15px;
+}
+#add-item-form {
+	margin: 5px;
+	display: inline-block;
+}
+#add-item-submit {
+	margin-left: 5px;
+}
+#sort {
+}
+#sortable {
+	list-style: none;
+}
+.ui-state-default {
+	margin-left: 20px;
+	margin-right: 20px;
+	/*float: left;*/
+	/*clear: both;*/
+	/*min-width: 300px;*/
+}
+.checkbox {
+	margin-left: 5px;
+	/*display: inline-block;*/
+}
+.strike {
+	text-decoration: line-through;
+}
+.opaque {
+	opacity: .5;
+}
