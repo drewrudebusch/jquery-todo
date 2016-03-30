@@ -6,7 +6,6 @@ $(document).ready(function() {
 	 	if (localStorage.hiddenTasks) {
 		 	var taskList = JSON.parse(localStorage.hiddenTasks);
 			if (taskList) {
-				console.log(JSON.parse(localStorage.hiddenTasks));
 				for(var i = 0; i < taskList.length; i++) {
 					$('#sortable').append('<div class="ui-sortable-handle task-item-container hidden">'
 					    + taskList[i] +
@@ -14,7 +13,6 @@ $(document).ready(function() {
 				};
 			};
 			var taskList = JSON.parse(localStorage.visibleTasks);
-		 	// console.log(taskList)
 			if (taskList) {;
 				for(var i = 0; i < taskList.length; i++) {
 					$('#sortable').append('<div class="ui-sortable-handle task-item-container">'
@@ -23,11 +21,8 @@ $(document).ready(function() {
 				};
 			};
 			$('.task-label').each(function(index, elem){
-				 console.log(elem)
 				 if ($(elem).hasClass('strike')) {
 					$(this).children('.task').prop("checked", true);
-					console.log('success');
-					console.log($(this).children('.task'))
 				};
 			});
 		};
@@ -93,7 +88,6 @@ $(document).ready(function() {
 	// clearCompletedTasks();
 
 	$('#sortable').on('mouseenter mouseleave', function() {
-		console.log('pushed to localStorage!')
 		pushToLocalStorage();
 	});
 
